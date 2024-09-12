@@ -15,7 +15,7 @@ body {
 }
 
 .form-container {
-  display: flex; /* Display flex */
+  display: flex; /* Use flexbox */
   flex-direction: column; /* Stack items (title and form) vertically */
   justify-content: center; /* Center vertically */
   align-items: center; /* Center horizontally */

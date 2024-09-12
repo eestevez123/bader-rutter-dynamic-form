@@ -6,9 +6,44 @@ This project demonstrates the creation of a dynamic, data-driven form using Vue 
 
 This app was [deployed](https://badger-rutter-dynamic-form.netlify.app/) on Netlify!
 
-## Editing the form-config.json
+# Form Input Types and Validations
 
-In order to function correctly, each field should be given a unique name. This way, you can have fields with the same label, but correspond to different values.
+> **Editing the form-config.json:** In order to function correctly, each field should be given a unique _name_. This way, you can have fields with the same label, but correspond to different values.
+
+## Simple Text Input (`text`)
+
+### Possible Validations
+
+- `mustHaveValue: boolean` - Whether or not the field is required
+- `minLength: number` - Minimum length of the input
+- `maxLength: number` - Maximum length of the input
+
+## Phone Number Input (`tel`)
+
+### Possible Validations
+
+- `mustOnlyAllowNumbers: boolean` - Whether or not to allow only numbers
+
+## Dropdown Selector (`dropdown`)
+
+### Possible Validations
+
+- `mustHaveValidOption: boolean` - Whether or not input needs to be a valid option
+
+## Multiline Text Input (`textarea`)
+
+### Possible Validations
+
+- `mustHaveValue: boolean` - Whether or not the field is required
+- `minLength: number` - Minimum length of the input
+- `maxLength: number` - Maximum length of the input
+- `shouldShowRemainingChars: boolean` - Whether or not to show remaining characters from maxLength. `maxLength` is required.
+
+## Group of Checkbox Inputs (`checkbox-group`)
+
+### Possible Validations
+
+- `mustHaveValidOption: boolean` - Whether or not input needs to be a valid option
 
 ## Recommended IDE Setup
 

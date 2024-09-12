@@ -10,6 +10,9 @@ import { ref } from 'vue'
 import FormView from './views/FormView.vue'
 import ResultView from './views/ResultView.vue'
 
+/**
+ * Main App component
+ */
 export default {
   name: 'App',
   components: {
@@ -17,7 +20,7 @@ export default {
     ResultView
   },
   setup() {
-    const currentView = ref('FormView')
+    const currentView = ref('FormView') // Start with the form view
 
     // Once the form has been submitted, switch to the results view
     const handleFormSubmitted = () => {

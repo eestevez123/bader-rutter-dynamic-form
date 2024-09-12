@@ -6,7 +6,9 @@ import SelectInput from './formTypes/SelectInput.vue'
 import TextAreaInput from './formTypes/TextAreaInput.vue'
 
 /**
- * Placeholder object that determines what kind of form field element is needed
+ * DynamicFormField component.
+ * Placeholder object that determines what kind of form field element is needed.
+ *
  */
 export default defineComponent({
   name: 'DynamicFormField',

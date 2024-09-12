@@ -13,16 +13,25 @@ export default defineComponent({
     const formConfig = formConfigData // import on the form data in json
     const formStore = useFormStore() // state management
 
-    const fields = formConfig.formFields // get the dynamic fields that will be rendered out
-    const formTitle = formConfig.formTitle // get the title of the form
+    // get the dynamic fields that will be rendered out
+    const fields = formConfig.formFields
 
-    const overallFormValidationError = ref('') // Message that popped up if user attempts to submit an invalid form
+    // get the form title
+    const formTitle = formConfig.formTitle
 
+    // Message that popped up if user attempts to submit an invalid form
+    const overallFormValidationError = ref('')
+
+    // Initialize the form fields
     fields.forEach((field: any) => {
-      // initialize state for each field
       formStore.initializeField(field.name, field.defaultValidity)
     })
 
+    /**
+     * Handle form submission.
+     * If the form is valid, emit an event to switch to the results view.
+     * If the form is invalid, display an error message.
+     */
     const handleSubmit = () => {
       if (formStore.isFormValid) {
         overallFormValidationError.value = ''

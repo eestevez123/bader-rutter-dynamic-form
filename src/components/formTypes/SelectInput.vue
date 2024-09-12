@@ -15,6 +15,9 @@
 import { defineComponent, ref } from 'vue'
 import { useFormStore } from '@/stores/FormStore'
 
+/**
+ * This component is responsible for rendering a select input field
+ */
 export default defineComponent({
   name: 'SelectInput',
   props: {
@@ -36,6 +39,7 @@ export default defineComponent({
       formStore.updateFieldValue(props?.field?.name, value)
     }
 
+    // validate the input value
     const validate = (value: string) => {
       if (props.field?.validations?.mustHaveValidOption && !value) {
         validationError.value = 'This field is required'

@@ -16,6 +16,9 @@
 import { ref, defineComponent } from 'vue'
 import { useFormStore } from '@/stores/FormStore'
 
+/**
+ * This component is responsible for rendering a text input field
+ */
 export default defineComponent({
   name: 'TextInput',
   props: {

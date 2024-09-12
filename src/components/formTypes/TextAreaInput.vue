@@ -19,6 +19,9 @@
 import { ref, computed, defineComponent } from 'vue'
 import { useFormStore } from '@/stores/FormStore'
 
+/**
+ * This component is responsible for rendering a text area input field
+ */
 export default defineComponent({
   name: 'TextAreaInput',
   props: {
@@ -28,14 +31,18 @@ export default defineComponent({
     const inputValue = ref('')
     const validationError = ref('')
     const formStore = useFormStore()
+
+    // Check if the field should show the remaining characters
     const shouldShowCharsRemaining = props.field?.validations?.shouldShowRemainingChars
 
+    // Calculate the number of remaining characters
     const remainingChars = computed(() => {
       let usecChars = 0
       if (inputValue?.value?.length) {
         usecChars = inputValue.value.length
       }
       if (shouldShowCharsRemaining && props.field?.validations?.maxLength) {
+        // If the remaining characters are less than 0, return 0
         if (props.field.validations.maxLength - usecChars <= 0) {
           return 0
         }
@@ -44,13 +51,14 @@ export default defineComponent({
       return 0
     })
 
+    // Validate the input value
     const validate = (value: string | undefined) => {
       if (props.field?.validations?.mustHaveValue && !value) {
         validationError.value = 'This field is required'
       } else if (
         props.field?.validations?.minLength &&
         value &&
-        value.length < props.field.validations.minLength
+        value.length < props.field?.validations.minLength
       ) {
         validationError.value = `This field must be at least ${props.field.validations.minLength} characters long`
       } else if (

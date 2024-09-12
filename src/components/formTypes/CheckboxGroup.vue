@@ -19,6 +19,9 @@
 import { defineComponent, ref } from 'vue'
 import { useFormStore } from '@/stores/FormStore'
 
+/**
+ * This component is responsible for rendering a checkbox group field
+ */
 export default defineComponent({
   name: 'CheckboxGroup',
   props: {
@@ -32,11 +35,13 @@ export default defineComponent({
     const validationError = ref('')
     const formStore = useFormStore()
 
+    // on input change, get the value of the current input, update the ref value, and check validation
     const onChange = () => {
       validate(selectedValues?.value)
       formStore.updateFieldValue(props?.field?.name, selectedValues?.value)
     }
 
+    // validate the input value
     const validate = (values: string[]) => {
       if (props.field?.validations?.mustHaveValidOption && values.length === 0) {
         validationError.value = 'Must have a valid selection'
