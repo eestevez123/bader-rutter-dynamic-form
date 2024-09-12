@@ -4,7 +4,7 @@ This project demonstrates the creation of a dynamic, data-driven form using Vue 
 
 ## See it in action!
 
-This app was [deployed](https://badger-rutter-dynamic-form.netlify.app/) on Netlify!
+This app was [deployed](https://main--bader-rutter-dynamic-form.netlify.app/) on Netlify!
 
 # Form Input Types and Validations
 
