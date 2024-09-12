@@ -2,10 +2,10 @@
   <div class="form-field-container">
     <label :for="field.label">{{ field.label }}</label>
     <input
-      v-model="inputValue"
       :id="field.label"
       type="text"
       @blur="onBlur"
+      @input="onInput"
       :placeholder="field.placeholder"
     />
     <p v-if="validationError" class="error">{{ validationError }}</p>
@@ -22,11 +22,10 @@ import { useFormStore } from '@/stores/FormStore'
 export default defineComponent({
   name: 'TextInput',
   props: {
-    modelValue: String,
     field: Object
   },
   setup(props) {
-    const inputValue = ref(props.modelValue)
+    const inputValue = ref('')
     const validationError = ref('')
     const formStore = useFormStore()
     const shouldShowCharsRemaining = props.field?.validations?.shouldShowRemainingChars
@@ -68,9 +67,15 @@ export default defineComponent({
       formStore.updateFieldValidity(props?.field?.name, validationError.value == '')
     }
 
+    // Validation should occur after the user edits the field
     const onBlur = () => {
       formStore.updateFieldValue(props?.field?.name, inputValue.value)
       validate(inputValue.value)
+    }
+
+    // we keep track of the current input of the field
+    const onInput = (event: any) => {
+      inputValue.value = (event.target as HTMLInputElement).value
     }
 
     return {
@@ -79,7 +84,7 @@ export default defineComponent({
       validationError,
       shouldShowCharsRemaining,
       remainingChars,
-      validate
+      onInput
     }
   }
 })

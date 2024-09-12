@@ -1,7 +1,7 @@
 <template>
   <div class="form-field-container select-input-container">
     <label :for="field.label">{{ field.label }}</label>
-    <select :id="field.label" v-model="selectedValue" @change="onChange">
+    <select :id="field.label" @change="onChange">
       <option value="">{{ field.placeholder }}</option>
       <option v-for="option in field.options" :key="option" :value="option">
         {{ option }}
@@ -18,10 +18,6 @@ import { useFormStore } from '@/stores/FormStore'
 export default defineComponent({
   name: 'SelectInput',
   props: {
-    modelValue: {
-      type: String,
-      required: true
-    },
     field: {
       type: Object,
       required: true
@@ -32,6 +28,7 @@ export default defineComponent({
     const validationError = ref('')
     const formStore = useFormStore()
 
+    // on input change, get the value of the current input, update the ref value, and check validation
     const onChange = (event: Event) => {
       const value = (event.target as HTMLSelectElement).value
       selectedValue.value = value

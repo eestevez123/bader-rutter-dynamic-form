@@ -2,6 +2,14 @@
 
 This project demonstrates the creation of a dynamic, data-driven form using Vue 3's Composition API.
 
+## See it in action!
+
+This app was [deployed](https://badger-rutter-dynamic-form.netlify.app/) on Netlify!
+
+## Editing the form-config.json
+
+In order to function correctly, each field should be given a unique name. This way, you can have fields with the same label, but correspond to different values.
+
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/)

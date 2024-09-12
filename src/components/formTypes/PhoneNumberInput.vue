@@ -1,13 +1,7 @@
 <template>
   <div class="form-field-container">
     <label :for="field.label">{{ field.label }}</label>
-    <input
-      type="tel"
-      :id="field.label"
-      :placeholder="field.placeholder"
-      @blur="onBlur"
-      v-model="phoneNumber"
-    />
+    <input type="tel" :id="field.label" :placeholder="field.placeholder" @blur="onBlur" />
     <p v-if="validationError" class="error">{{ validationError }}</p>
   </div>
 </template>
@@ -19,17 +13,13 @@ import { useFormStore } from '@/stores/FormStore'
 export default defineComponent({
   name: 'PhoneNumberInput',
   props: {
-    modelValue: {
-      type: String,
-      required: true
-    },
     field: {
       type: Object,
       required: true
     }
   },
   setup(props) {
-    const phoneNumber = ref(props.modelValue)
+    const phoneNumber = ref('')
     const validationError = ref('')
     const formStore = useFormStore()
 

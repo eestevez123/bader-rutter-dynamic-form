@@ -5,6 +5,11 @@ interface FieldState {
   valid: boolean
 }
 
+/**
+ * Used pinia for state management within this Vue app. This state keeps track of the value of each
+ * field and if each field is valid or not
+ *
+ */
 export const useFormStore = defineStore('form', {
   state: () => ({
     fields: {} as Record<string, FieldState>

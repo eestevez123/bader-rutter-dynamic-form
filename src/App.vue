@@ -1,5 +1,6 @@
 <template>
   <div class="form-container">
+    <!-- Switch between views once the form is submitted -->
     <component :is="currentView" @form-submitted="handleFormSubmitted"></component>
   </div>
 </template>
@@ -18,6 +19,7 @@ export default {
   setup() {
     const currentView = ref('FormView')
 
+    // Once the form has been submitted, switch to the results view
     const handleFormSubmitted = () => {
       currentView.value = 'ResultView'
     }

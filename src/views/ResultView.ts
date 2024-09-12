@@ -1,7 +1,11 @@
 import formConfigData from '@/form-config.json'
 import { useFormStore } from '@/stores/FormStore'
+import { defineComponent } from 'vue'
 
-export default {
+/**
+ * This view shows the results from the submitted form
+ */
+export default defineComponent({
   name: 'ResultView',
 
   setup() {
@@ -20,4 +24,4 @@ export default {
 
     return { formTitle, fieldsWithLabelsAndValues }
   }
-}
+})

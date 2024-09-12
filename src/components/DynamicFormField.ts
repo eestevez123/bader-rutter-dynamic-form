@@ -1,10 +1,13 @@
-import { computed } from 'vue'
+import { computed, defineComponent } from 'vue'
 import TextInput from './formTypes/TextInput.vue'
 import PhoneNumberInput from './formTypes/PhoneNumberInput.vue'
 import CheckboxGroup from './formTypes/CheckboxGroup.vue'
 import SelectInput from './formTypes/SelectInput.vue'
 
-export default {
+/**
+ * Placeholder object that determines what kind of form field element is needed
+ */
+export default defineComponent({
   name: 'DynamicFormField',
   components: {
     TextInput,
@@ -13,8 +16,7 @@ export default {
     SelectInput
   },
   props: {
-    field: Object, // Contains field information (type, label, validation, etc.)
-    modelValue: [String, Array] // For v-model binding
+    field: Object // Contains field information (type, label, validation, etc.)
   },
   setup(props: any) {
     const fieldComponent = computed(() => {
@@ -33,10 +35,9 @@ export default {
     })
 
     const fieldProps = computed(() => ({
-      ...props.field,
-      modelValue: props.modelValue
+      ...props.field
     }))
 
     return { fieldComponent, fieldProps }
   }
-}
+})

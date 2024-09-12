@@ -22,17 +22,13 @@ import { useFormStore } from '@/stores/FormStore'
 export default defineComponent({
   name: 'CheckboxGroup',
   props: {
-    modelValue: {
-      type: [Array, String],
-      required: true
-    },
     field: {
       type: Object,
       required: true
     }
   },
   setup(props) {
-    const selectedValues = ref(Array.isArray(props.modelValue) ? [...props.modelValue] : [])
+    const selectedValues = ref([])
     const validationError = ref('')
     const formStore = useFormStore()
 
