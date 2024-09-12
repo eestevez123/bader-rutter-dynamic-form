@@ -3,6 +3,7 @@ import TextInput from './formTypes/TextInput.vue'
 import PhoneNumberInput from './formTypes/PhoneNumberInput.vue'
 import CheckboxGroup from './formTypes/CheckboxGroup.vue'
 import SelectInput from './formTypes/SelectInput.vue'
+import TextAreaInput from './formTypes/TextAreaInput.vue'
 
 /**
  * Placeholder object that determines what kind of form field element is needed
@@ -13,7 +14,8 @@ export default defineComponent({
     TextInput,
     PhoneNumberInput,
     CheckboxGroup,
-    SelectInput
+    SelectInput,
+    TextAreaInput
   },
   props: {
     field: Object // Contains field information (type, label, validation, etc.)
@@ -29,6 +31,8 @@ export default defineComponent({
           return 'SelectInput'
         case 'checkbox-group':
           return 'CheckboxGroup'
+        case 'textarea':
+          return 'TextAreaInput'
         default:
           return null
       }

@@ -2,3 +2,9 @@ input[type='tel'] {
   width: 20vw;
   white-space: normal;
 }
+
+@media screen and (max-width: 1018px) {
+  input[type='tel'] {
+    width: 100%;
+  }
+}

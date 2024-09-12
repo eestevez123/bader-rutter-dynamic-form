@@ -1,0 +1,17 @@
+.textarea-label {
+  vertical-align: top;
+  padding-bottom: 5px;
+}
+
+.remaining-chars {
+  font-size: 0.8em;
+  color: gray;
+  text-align: right;
+}
+
+.form-field-container {
+  textarea {
+    width: 100%;
+    margin-top: 5px;
+  }
+}

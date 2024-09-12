@@ -1,5 +1,5 @@
 <template>
-  <div class="form-field-container">
+  <div class="form-field-container checkbox-group-container">
     <label>{{ field.label }}</label>
     <div v-for="option in field.options" :key="option">
       <input
@@ -9,7 +9,7 @@
         v-model="selectedValues"
         @change="onChange"
       />
-      <label :for="option">{{ option }}</label>
+      <label :for="option" class="checkbox-option-label">{{ option }}</label>
     </div>
     <p v-if="validationError" class="error">{{ validationError }}</p>
   </div>

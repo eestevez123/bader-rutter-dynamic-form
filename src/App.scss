@@ -29,4 +29,11 @@ form {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   border-radius: 8px; /* Optional: rounded corners */
   text-align: left; /* Align form elements to the left */
+  width: 50vw; /* Take up half the width*/
+}
+
+@media screen and (max-width: 820px) {
+  form {
+    width: 80vw;
+  }
 }

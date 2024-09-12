@@ -1,7 +1,7 @@
 <template>
   <div class="form-field-container">
-    <label :for="field.label">{{ field.label }}</label>
-    <input
+    <label :for="field.label" class="textarea-label">{{ field.label }}</label>
+    <textarea
       :id="field.label"
       type="text"
       @blur="onBlur"
@@ -9,15 +9,18 @@
       :placeholder="field.placeholder"
     />
     <p v-if="validationError" class="error">{{ validationError }}</p>
+    <p v-if="shouldShowCharsRemaining" class="remaining-chars">
+      {{ remainingChars }} characters remaining
+    </p>
   </div>
 </template>
 
 <script lang="ts">
-import { ref, defineComponent } from 'vue'
+import { ref, computed, defineComponent } from 'vue'
 import { useFormStore } from '@/stores/FormStore'
 
 export default defineComponent({
-  name: 'TextInput',
+  name: 'TextAreaInput',
   props: {
     field: Object
   },
@@ -25,6 +28,21 @@ export default defineComponent({
     const inputValue = ref('')
     const validationError = ref('')
     const formStore = useFormStore()
+    const shouldShowCharsRemaining = props.field?.validations?.shouldShowRemainingChars
+
+    const remainingChars = computed(() => {
+      let usecChars = 0
+      if (inputValue?.value?.length) {
+        usecChars = inputValue.value.length
+      }
+      if (shouldShowCharsRemaining && props.field?.validations?.maxLength) {
+        if (props.field.validations.maxLength - usecChars <= 0) {
+          return 0
+        }
+        return props.field.validations.maxLength - usecChars
+      }
+      return 0
+    })
 
     const validate = (value: string | undefined) => {
       if (props.field?.validations?.mustHaveValue && !value) {
@@ -64,10 +82,12 @@ export default defineComponent({
       inputValue,
       onBlur,
       validationError,
+      shouldShowCharsRemaining,
+      remainingChars,
       onInput
     }
   }
 })
 </script>
 
-<style scoped lang="sass" src="./TextInput.scss"></style>
+<style scoped lang="sass" src="./TextAreaInput.scss"></style>
