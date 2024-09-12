@@ -1,0 +1,59 @@
+{
+  "formTitle": "Demo Form",
+  "formFields": [
+    {
+      "name": "fullName",
+      "type": "text",
+      "label": "Full Name",
+      "placeholder": "Please enter your full name",
+      "validations": {
+        "mustHaveValue": true,
+        "minLength": 3
+      },
+      "defaultValidity": false
+    },
+    {
+      "name": "phoneNumber",
+      "type": "tel",
+      "label": "Phone",
+      "placeholder": "Please enter your phone number",
+      "validations": {
+        "mustOnlyAllowNumbers": true
+      },
+      "defaultValidity": true
+    },
+    {
+      "name": "interest",
+      "type": "dropdown",
+      "label": "Interest",
+      "placeholder": "Select Interest",
+      "options": ["Mountains", "Oceans", "Deserts"],
+      "validations": {
+        "mustHaveValidOption": true
+      },
+      "defaultValidity": false
+    },
+    {
+      "name": "description",
+      "type": "text",
+      "label": "Description",
+      "placeholder": "Write Description here",
+      "validations": {
+        "maxLength": 500,
+        "shouldShowRemainingChars": true
+      },
+      "defaultValidity": true
+    },
+    {
+      "name": "travelOptions",
+      "type": "checkbox-group",
+      "label": "Travel",
+      "placeholder": "Select Travel Option",
+      "options": ["Car", "Bus", "Train"],
+      "validations": {
+        "mustHaveValidOption": true
+      },
+      "defaultValidity": false
+    }
+  ]
+}
